@@ -9,6 +9,13 @@
 
     <Button
         android:layout_width="match_parent"
+        android:text="APK列表"
+        android:layout_height="wrap_content"
+        android:onClick="onApkListClicked"
+        tools:ignore="HardcodedText"/>
+
+    <Button
+        android:layout_width="match_parent"
         android:text="上传APK"
         android:layout_height="wrap_content"
         android:onClick="onUploadApkClicked"

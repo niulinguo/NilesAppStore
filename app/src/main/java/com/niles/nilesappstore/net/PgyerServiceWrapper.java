@@ -36,6 +36,15 @@ public class PgyerServiceWrapper implements PgyerService {
         return mPgyerService.uploadApk(apiKey, filePart, params);
     }
 
+    @Override
+    public Call<JsonObject> apkList(@NonNull String apiKey, Integer page) {
+        return mPgyerService.apkList(apiKey, page);
+    }
+
+    public void apkList(Integer page, @NonNull JsonObjectCallback<?> callback) {
+        mRetrofitManager.execute(apkList(API_KEY, page), callback);
+    }
+
     public void uploadApk(@NonNull File file, @NonNull JsonObjectCallback<?> callback) {
         final MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MultipartBody.FORM, file));
         mRetrofitManager.execute(uploadApk(RequestBody.create(MultipartBody.FORM, API_KEY), filePart, new HashMap<String, RequestBody>()), callback);

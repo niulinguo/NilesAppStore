@@ -9,6 +9,8 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -24,4 +26,8 @@ public interface PgyerService {
     @Multipart
     @POST("app/upload")
     Call<JsonObject> uploadApk(@NonNull @Part("_api_key") RequestBody apiKey, @NonNull @Part MultipartBody.Part filePart, @NonNull @PartMap Map<String, RequestBody> params);
+
+    @FormUrlEncoded
+    @POST("app/listMy")
+    Call<JsonObject> apkList(@NonNull @Field("_api_key") String apiKey, @Field("page") Integer page);
 }

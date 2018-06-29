@@ -8,7 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.niles.nilesappstore.model.UploadApkResultModel;
+import com.niles.nilesappstore.model.ApkInfoModel;
+import com.niles.nilesappstore.model.ApkListModel;
 import com.niles.nilesappstore.net.JsonObjectCallback;
 import com.niles.nilesappstore.net.PgyerServiceWrapper;
 
@@ -31,14 +32,28 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "文件不存在", Toast.LENGTH_SHORT).show();
             return;
         }
-        mPgyerServiceWrapper.uploadApk(file, new JsonObjectCallback<UploadApkResultModel>() {
+        mPgyerServiceWrapper.uploadApk(file, new JsonObjectCallback<ApkInfoModel>() {
             @Override
             public void onFailure(int code, @NonNull String message, @Nullable Throwable e) {
                 Toast.makeText(MainActivity.this, message + "(" + code + ")", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            protected void onSuccess(int code, @NonNull String message, UploadApkResultModel data) {
+            protected void onSuccess(int code, @NonNull String message, ApkInfoModel data) {
+                Toast.makeText(MainActivity.this, message + "(" + code + ")", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void onApkListClicked(View view) {
+        mPgyerServiceWrapper.apkList(null, new JsonObjectCallback<ApkListModel>() {
+            @Override
+            protected void onSuccess(int code, @NonNull String message, @Nullable ApkListModel data) {
+                Toast.makeText(MainActivity.this, message + "(" + code + ")", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int code, @NonNull String message, @Nullable Throwable e) {
                 Toast.makeText(MainActivity.this, message + "(" + code + ")", Toast.LENGTH_SHORT).show();
             }
         });
