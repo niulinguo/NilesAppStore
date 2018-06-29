@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="margin_vertical">@dimen/dp_8</dimen>
+    <dimen name="margin_horizontal">@dimen/dp_8</dimen>
+</resources>

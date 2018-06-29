@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.niles.nilesappstore.model.ApkInfoModel"/>
+
+        <variable
+            name="callback"
+            type="com.niles.nilesappstore.list.ApkItemClickCallback"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_vertical"
+        android:layout_marginEnd="@dimen/margin_horizontal"
+        android:layout_marginLeft="@dimen/margin_horizontal"
+        android:layout_marginRight="@dimen/margin_horizontal"
+        android:layout_marginStart="@dimen/margin_horizontal"
+        android:layout_marginTop="@dimen/margin_vertical"
+        android:onClick="@{()->callback.onClick(model)}"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_vertical"
+            android:layout_marginEnd="@dimen/margin_horizontal"
+            android:layout_marginLeft="@dimen/margin_horizontal"
+            android:layout_marginRight="@dimen/margin_horizontal"
+            android:layout_marginStart="@dimen/margin_horizontal"
+            android:layout_marginTop="@dimen/margin_vertical">
+
+            <TextView
+                android:id="@+id/tv_build_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.buildName}"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="@{@string/apkVersion(model.buildVersion, model.buildVersionNo)}"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_build_name"
+                android:text="@{@string/build_version(model.buildBuildVersion)}"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_build_name"
+                android:text="@{model.buildCreated}"
+                android:textColor="@android:color/black"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

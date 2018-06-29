@@ -11,4 +11,7 @@ public class ApkListModel {
 
     private List<ApkInfoModel> list;
 
+    public List<ApkInfoModel> getList() {
+        return list;
+    }
 }

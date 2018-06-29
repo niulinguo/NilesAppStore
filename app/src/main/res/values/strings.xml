@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NilesAppStore</string>
+    <string name="build_version">build %s</string>
+    <string name="apkVersion">v%s(%s)</string>
 </resources>
